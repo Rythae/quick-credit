@@ -1,3 +1,6 @@
+@import 'font-awesome.min.css';
+
+
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +36,8 @@ select {
   color: white;
   display: inline-block;
   text-decoration: none;
+  font-size: 15px;
+  font-family: Helvetica, sans-serif
 }
 
 .btn.btn-danger {
@@ -48,6 +53,7 @@ label {
   padding: 15px;
   position: relative;
   z-index: 1;
+  padding-bottom: 100px;
 }
 
 .page-background {
@@ -110,12 +116,15 @@ li {
 
 .wrapper-admin {
   background-color: #cecece;
-  height: 95vh;
   display: flex;
   margin: 0 auto;
   padding: 1px;
   width: 100%;
   border: 1px solid #cecece;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  height: 100%;
 }
 
 a:-webkit-any-link {
@@ -149,8 +158,9 @@ a:-webkit-any-link {
 
 #header {
   font-size: large;
-  padding: 0.3em;
+  padding: 10px;
   background: #000;
+  height: 50px;
 }
 
 #header > p {
@@ -165,11 +175,111 @@ a:-webkit-any-link {
 }
 
 .right {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   height: 100%;
   width: 87%;
 }
 /* ends*/
+
+/* Hamburger menu */
+
+
+
+/*.navigation_button {
+  background-color: #000;
+  height: 7rem;
+  width: 7rem;
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+  border-radius: 50%;
+  z-index: 2000;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer; 
+}
+
+@media (max-width: 56.25em) {
+    .navigation_button {
+      top: 4rem;
+      right: 4rem; 
+    } 
+  }
+
+@media (max-width: 37.5em) {
+    .navigation_button {
+      top: 3rem;
+      right: 3rem; 
+    } 
+  }
+
+.navigation_nav {
+  height: 50vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  opacity: 0;
+  width: 0;
+}
+*/
+/*.navigation_list {
+  position: absolute;
+  top: 50%;
+  left: 50%;*/
+  /*transform: translate(-50%, -50%);*/
+  /*list-style: none;
+  text-align: left;*/
+  /*width: 100%; */
+/*}
+
+.navigation_item {
+  margin: 1rem; 
+}*/
+
+/*.side-link:link, .side-link:visited {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 100;
+  padding: 5px 3px;*/
+  /*padding: 1rem 2rem;*/
+  /*color: #fff;
+  text-decoration: none;
+  text-transform: none;
+}*/
+
+/*.side-link:link span, .side-link:visited span {
+    margin-right: 1rem;
+    display: inline-block; 
+
+}*/
+
+/*.side-link:hover, .side-link:active {
+  background-position: 100%;*/
+  /*color: #55c57a; */
+/*}*/
+
+/*.navigation_checkbox:checked ~ .navigation_background {
+  transform: scale(80); 
+}*/
+
+/*.navigation_checkbox:checked ~ .navigation_nav {
+  opacity: 1;
+  width: 13%; 
+}
+
+.navigation_icon {
+  position: relative;
+  margin-top: 3.5rem; 
+}
+
+.navigation_checkbox:checked + .navigation_button .navigation_icon {
+  background-color: transparent; 
+}*/
+
+
+
+/* ends */
 
 /* User dashboard */
 
@@ -270,7 +380,7 @@ form {
   font-size: 20px;
 }
 
-.record-item > button {
+.record-item > .btn {
   display: block;
   position: absolute;
   right: 10px;
@@ -338,5 +448,7 @@ form {
 
 /* Tablet Landscape | desktop and above - large */
 @media (min-width: 60em) {
-
+  .navigation_nav .navigation_checkbox .navigation_button .navigation_icon {
+    display: none; 
+  }
 }

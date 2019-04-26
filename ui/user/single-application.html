@@ -6,45 +6,56 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Quick Credit</title>
   <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/grid.css">
 </head>
 <body>
 
-  <div class="wrapper">
-    <!-- Beginning of single item view -->
-    <div class='single-item-view'>
-      <div class="data-section">
-        <div class="title">Email</div>
-        <div class="value">you@mail.com</div>
-      </div>
-      <div class="data-section">
-        <div class="title">amount requested</div>
-        <div class="value">#5000</div>
-      </div>
-      <div class="data-section">
-        <div class="title">amount to repay</div>
-        <div class="value">#5500</div>
-      </div>
-      <div class="data-section">
-        <div class="title">payment duration</div>
-        <div class="value">3 Months</div>
-      </div>
-      <div class="data-section">
-        <div class="title">Monthly Installments</div>
-        <div class="value">#3000</div>
-      </div>
-      <button class="btn btn-danger">Cancel Loan</button>
-      <button class="btn">Approve Loan</button>
-
-
-
+  <div class="wrapper-admin">
+    
+    <div class="left">
+      <ul class="side-ul">
+  			<li><a href="loan-request.html" class="side-link">Request loan</a></li>
+  			<li><a href="current-loans.html" class="side-link">View current loans</a></li>
+        <li><a href="loan-history.html" class="side-link">View loan history</a></li>
+  		</ul>
     </div>
-    <!-- End of single item view -->
 
+  	<div class="right">
+  		<div class="main-content">
+        <header id="header">
+          <p>Hi,Smith!</p>
+        </header>
+  			<div class="wrapper">
+          <!-- Beginning of single item view -->
+          <div class='single-item-view'>
+            <div class="data-section">
+              <div class="title">Email</div>
+              <div class="value">you@mail.com</div>
+            </div>
+            <div class="data-section">
+              <div class="title">amount requested</div>
+              <div class="value">#5000</div>
+            </div>
+            <div class="data-section">
+              <div class="title">amount to repay</div>
+              <div class="value">#5500</div>
+            </div>
+            <div class="data-section">
+              <div class="title">payment duration</div>
+              <div class="value">3 Months</div>
+            </div>
+            <div class="data-section">
+              <div class="title">Monthly Installments</div>
+              <div class="value">#3000</div>
+            </div>
+            <button class="btn btn-danger">Cancel Loan</button>
+            <button class="btn">Approve Loan</button>
+          </div>
+          <!-- End of single item view -->
+        </div>
+  		</div>
+  	</div>
   </div>
 
-  <div class="page-background">
-    <div class='overlay'></div>
-  </div>
-
-</body>
-</html>
+ </body>
+ </html>
