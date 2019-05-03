@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
 	});
 });
 
-app.get('*', async(req, res) => {
+app.get('*', (req, res) => {
 
 	const users = {id: 1};
-	const newUser = await [{...users}];
+	const newUser = [{...users}];
 
 	return res.status(404).send({
 		message: 'Route not found',

@@ -19,7 +19,7 @@
     "url": "https://github.com/Rythae/quick-credit/issues"
   },
   "engines": {
-    "node": "8.9.4"
+    "node": "8.11.4"
   },
   "homepage": "https://github.com/Rythae/quick-credit#readme",
   "dependencies": {
