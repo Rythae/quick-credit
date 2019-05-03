@@ -18,6 +18,9 @@
   "bugs": {
     "url": "https://github.com/Rythae/quick-credit/issues"
   },
+  "engines": {
+    "node": "8.9.4"
+  },
   "homepage": "https://github.com/Rythae/quick-credit#readme",
   "dependencies": {
     "body-parser": "1.19.0",
