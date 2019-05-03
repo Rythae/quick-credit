@@ -1,0 +1,33 @@
+{
+  "name": "quick-credit",
+  "version": "1.0.0",
+  "description": "\"# quick-credit\"",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon index.js --exec babel-node --preset-env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rythae/quick-credit.git"
+  },
+  "author": "Rythae <auxano42@gmail.com> (github.com/Rythae)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rythae/quick-credit/issues"
+  },
+  "homepage": "https://github.com/Rythae/quick-credit#readme",
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "express": "4.16.4",
+    "morgan": "1.9.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.4",
+    "@babel/node": "7.2.2",
+    "@babel/preset-env": "7.4.4",
+    "@babel/register": "7.4.4",
+    "babel-polyfill": "6.26.0",
+    "nodemon": "1.19.0"
+  }
+}
