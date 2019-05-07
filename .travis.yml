@@ -8,13 +8,10 @@ env:
     - CC_TEST_REPORTER_ID=069ff68e9d23f5bc51c832963981af14a52630b95145ea97c35dba26607e457e
 before_script:
   - npm install
-  - curl -L https://codeclimate.com/downloads/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  
 script:
   - nyc --reporter=lcov npm run test
 
 after_success:
   - npm run coveralls
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
