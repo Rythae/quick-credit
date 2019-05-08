@@ -7,7 +7,7 @@
     "dev": "nodemon server/index.js --exec babel-node",
     "build": "babel server --out-dir dist",
     "start": "node dist",
-    "test": "nyc mocha --timeout 5000 --exit server/tests --require @babel/register",
+    "test": "nyc mocha --timeout 5000 --exit server/tests --require @babel/register --require babel-polyfill",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "heroku-postbuild": "npm run build"
   },
