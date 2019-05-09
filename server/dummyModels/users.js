@@ -16,7 +16,7 @@ const users = [
     email: 'quickuser2@quick-cred.test',
     firstName: 'Jane',
     lastName: 'Dough',
-    password: bcrypt.hashSync('dummypass123', 10),
+    password: bcrypt.hashSync('dummypass1234', 10),
     address: '7, Smith Road, Smith Town',
     isAdmin: true,
     status: 'verified'

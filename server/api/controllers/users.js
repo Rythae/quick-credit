@@ -45,7 +45,56 @@ class UsersController {
       data: newUser
     });
   }
-}
 
+
+  /**
+   * @param  {Object} req - the request object
+   * @param  {Object} res - the response object
+   * @return {JsonResponse} - the json response
+   */
+  static async userSignin(req, res) {
+    const { email, password } = req.body;
+    const user = users.find(item => item.email === email);
+
+    if (!user) {
+      return res.status(401).send({
+        status: 'fail',
+        message: 'wrong login data'
+      });
+    }
+
+    const passwordsMatch = await bcrypt.compareSync(password, user.password);
+
+    if (!passwordsMatch) {
+      return res.status(401).send({
+        status: 'fail',
+        message: 'wrong login data'
+      });
+    }
+
+    const expiryTime = 60 * 60; // 1 hour
+
+    const token = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: expiryTime }
+    );
+
+    const data = {
+      email: user.email,
+      token
+    };
+
+    return res.status(200).send({
+      status: 'success',
+      message: 'login successful',
+      data
+    });
+  }
+}
 
 export default UsersController;

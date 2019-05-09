@@ -23,6 +23,6 @@ app.get('*', (req, res) => {
   return res.status(404).send({
     message: 'Route not found',
   });
-});
+}); 
 
 export default app;
