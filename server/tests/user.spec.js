@@ -2,6 +2,7 @@ import {
   describe, it,
 } from 'mocha';
 import chai from 'chai';
+import { should } from 'chai';
 import supertest from 'supertest';
 import app from '../app';
 
@@ -52,3 +53,41 @@ describe('User', () => {
     });
   });
 });
+
+
+describe('User', () => {
+  describe('/POST User', () => {
+    it('should sign in a user', (done) => {
+      const user = {
+        email: 'quickuser1@quick-cred.test',
+        password: 'dummypass123',
+      };
+
+      request.post('/api/v1/auth/signin')
+        .send(user)
+        .end((err, res) => {
+          res.status.should.be.eql(200);
+          res.body.message.should.be.eql('login successful');
+        });
+
+      done();
+    });
+
+    it('should handle validation errors when user does not supply required input', (done) => {
+      const user = {
+        email: 'quickuser1@quick-cred.test',
+        password: '',
+      };
+
+      request.post('/api/v1/auth/signin')
+        .send(user)
+        .end((err, res) => {
+          res.status.should.be.eql(422);
+          res.body.message.should.be.eql('wrong input provided');
+        });
+
+      done();
+    });
+  });
+});
+
