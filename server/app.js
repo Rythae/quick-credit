@@ -11,13 +11,13 @@ app.use(morganLogger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use('/api/v1', routes);
+
 app.get('/', (req, res) => {
   return res.status(200).send({
     message: 'Welcome to Quick Credit!'
   });
 });
-
-app.use('/api/v1', routes);
 
 app.get('*', (req, res) => {
   return res.status(404).send({
