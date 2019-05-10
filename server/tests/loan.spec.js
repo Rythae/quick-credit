@@ -17,13 +17,39 @@ describe('Loan', () => {
       request.get('/api/v1/loans')
         .end((err, res) => {
           res.status.should.be.eql(200);
-          res.body.message.should.be.eql('Loans returned successfully');
         });
 
       done();
     });
   });
-});
-    
 
-    
+  describe('/POST Loan', () => {
+    let token;
+
+    before((done) => {
+      const loginDetails = {
+        email: 'quickuser1@quick-cred.test',
+        password: 'dummypass123'
+      };
+      request.post('/api/v1/auth/signin')
+        .send(loginDetails).end((err, res) => {
+          ({ token } = res.body.data);
+          done();
+        });
+    });
+
+    it('should create a loan', (done) => {
+      const newLoan = {
+        amount: '10000',
+        tenor: 12
+      };
+
+      request.post(`/api/v1/loans?token=${token}`)
+        .send(newLoan)
+        .end((err, res) => {
+          res.status.should.be.eql(201);
+          done(); 
+        });
+    });
+  });
+});
