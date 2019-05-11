@@ -13,7 +13,7 @@ class LoansController {
    * @param {object} res - Response object
    * @return {json} res.json
    */
-  static async getAUsersLoan(req, res) {
+  static async getAllLoans(req, res) {
     return res.status(200).send({
       status: 'success',
       data: loans,

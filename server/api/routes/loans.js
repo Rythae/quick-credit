@@ -5,7 +5,11 @@ import loanRequestValidator from '../middlewares/loanRequestValidator';
 
 const loansRouter = Router();
 
-const { createLoanRequest } = LoansController;
+const { createLoanRequest, getAllLoans } = LoansController;
+
+loansRouter.get('/',
+  tokenVerification,
+  getAllLoans);
 
 loansRouter.post('/',
   tokenVerification,

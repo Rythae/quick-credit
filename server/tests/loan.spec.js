@@ -2,7 +2,6 @@ import {
   describe, it,
 } from 'mocha';
 import chai from 'chai';
-import { should } from 'chai';
 import supertest from 'supertest';
 import app from '../app';
 
