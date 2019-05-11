@@ -93,6 +93,23 @@ class LoansController {
       data: newLoan,
     });
   }
+
+  /**
+   * @static
+   * @param {Object} req - Request object
+   * @param {Object} res - Response object
+   * @return {JonResponse} - json response with status code
+   */
+  static async getSingleLoan(req, res) {
+    const { loanId } = req.params;
+
+    const loan = loans.find(item => item.id === Number(loanId));
+
+    return res.status(200).send({
+      status: 'success',
+      data: loan,
+    });
+  }
 }
 
 export default LoansController;
