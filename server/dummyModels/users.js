@@ -20,7 +20,17 @@ const users = [
     address: '7, Smith Road, Smith Town',
     isAdmin: true,
     status: 'verified'
-  }
+  },
+  {
+    id: 3,
+    email: 'quickuser3@quick-cred.test',
+    firstName: 'Rita',
+    lastName: 'Smith',
+    password: bcrypt.hashSync('dummypass123', 10),
+    address: '5, Smith Road, Smith Town',
+    isAdmin: false,
+    status: 'verified'
+  },
 ];
 
 export default users;
