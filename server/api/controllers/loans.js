@@ -21,11 +21,12 @@ class LoansController {
     let allLoans;
     if(status === 'approved' && repaid === 'true') {
       allLoans = loans.filter(item => item.status === 'approved' && item.repaid === true);
+    } else if(status === 'approved' && repaid === 'false') {
+      allLoans = loans.filter(item => item.status === 'approved' && item.repaid === false);
     } else {
       // all existing loans unfiltered
       allLoans = loans;
     }
-
  
     allLoans.forEach(loan => {
       loan.repayments = repayments.filter(paymentItem => paymentItem.loanId === loan.id)
