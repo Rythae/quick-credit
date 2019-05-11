@@ -15,14 +15,25 @@ class LoansController {
    * @return {json} res.json
    */
   static async getAllLoans(req, res) {
-     // get all repayments under each loan
-    loans.forEach(loan => {
+    // get all repayments under each loan
+    let { status, repaid } = req.query;
+    
+    let allLoans;
+    if(status === 'approved' && repaid === 'true') {
+      allLoans = loans.filter(item => item.status === 'approved' && item.repaid === true);
+    } else {
+      // all existing loans unfiltered
+      allLoans = loans;
+    }
+
+ 
+    allLoans.forEach(loan => {
       loan.repayments = repayments.filter(paymentItem => paymentItem.loanId === loan.id)
     });
     
     return res.status(200).send({
       status: 'success',
-      data: loans,
+      data: allLoans,
     });
   }
 
