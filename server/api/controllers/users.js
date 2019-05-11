@@ -85,7 +85,7 @@ class UsersController {
     );
 
     const data = {
-      email: user.email,
+      id: user.id,
       token
     };
 
