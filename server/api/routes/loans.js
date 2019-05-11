@@ -6,7 +6,7 @@ import verifyAdmin from '../middlewares/verifyAdmin';
 
 const loansRouter = Router();
 
-const { createLoanRequest, getAllLoans } = LoansController;
+const { createLoanRequest, getAllLoans, getSingleLoan } = LoansController;
 
 loansRouter.get('/',
   tokenVerification,
@@ -17,5 +17,9 @@ loansRouter.post('/',
   tokenVerification,
   loanRequestValidator,
   createLoanRequest);
+
+loansRouter.get('/:loanId',
+  tokenVerification,
+  getSingleLoan);
 
 export default loansRouter;

@@ -11,9 +11,9 @@ const request = supertest(app);
 chai.should();
 
 describe('Loan', () => {
-  let invalidToken = 'asdasdasdsasd';
+  const invalidToken = 'asdasdasdsasd';
 
-  describe('/GET Loan', () => {
+  describe('GET /loans', () => {
     let adminToken;
     let userToken;
 
@@ -118,6 +118,32 @@ describe('Loan', () => {
         .set('authorization', token)
         .end((err, res) => {
           res.status.should.be.eql(201);
+          done();
+        });
+    });
+  });
+
+  describe('GET /loans/:loanId', () => {
+    let adminToken;
+
+    before((done) => {
+      const loginDetails = {
+        email: 'quickuser2@quick-cred.test',
+        password: 'dummypass1234'
+      };
+      request.post('/api/v1/auth/signin')
+        .send(loginDetails).end((err, res) => {
+          ({ token: adminToken } = res.body.data);
+          done();
+        });
+    });
+
+    it('should return a specific loan', (done) => {
+      request.get('/api/v1/loans/1')
+        .set('authorization', adminToken)
+        .end((err, res) => {
+          res.status.should.be.eql(200);
+          res.body.data.id.should.be.eql(1);
           done();
         });
     });
