@@ -80,6 +80,16 @@ describe('Loan', () => {
           done();
         });
     });
+
+    it('should return loans not fully paid', (done) => {
+      request.get('/api/v1/loans?status=approved&repaid=false')
+        .set('authorization', adminToken)
+        .end((err, res) => {
+          res.status.should.be.eql(200);
+          res.body.data.should.be.a('array');
+          done();
+        });
+    });
   });
 
   describe('/POST Loan', () => {
