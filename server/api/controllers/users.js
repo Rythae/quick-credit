@@ -95,6 +95,23 @@ class UsersController {
       data
     });
   }
+
+  /**
+   * @param  {Object} req - the request object
+   * @param  {Object} res - the response object
+   * @return {JsonResponse} - the json response
+   */
+  static async userVerify(req, res) {
+    const { userId } = req.params;
+    const user = users.find(item => item.id === Number(userId));
+
+    user.status = 'verified';
+
+    return res.status(200).send({
+      status: 'success',
+      data: user
+    });
+  }
 }
 
 export default UsersController;

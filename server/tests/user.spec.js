@@ -2,7 +2,6 @@ import {
   describe, it,
 } from 'mocha';
 import chai from 'chai';
-import { should } from 'chai';
 import supertest from 'supertest';
 import app from '../app';
 
@@ -12,7 +11,7 @@ const request = supertest(app);
 chai.should();
 
 describe('User', () => {
-  describe('/POST User', () => {
+  describe('POST /auth/signup', () => {
     it('should sign up a user', (done) => {
       const user = {
         firstName: 'john',
@@ -52,11 +51,8 @@ describe('User', () => {
       done();
     });
   });
-});
 
-
-describe('User', () => {
-  describe('/POST User', () => {
+  describe('POST /auth/sign', () => {
     it('should sign in a user', (done) => {
       const user = {
         email: 'quickuser1@quick-cred.test',
@@ -68,9 +64,8 @@ describe('User', () => {
         .end((err, res) => {
           res.status.should.be.eql(200);
           res.body.message.should.be.eql('login successful');
+          done();
         });
-
-      done();
     });
 
     it('should handle validation errors when user does not supply required input', (done) => {
@@ -84,10 +79,34 @@ describe('User', () => {
         .end((err, res) => {
           res.status.should.be.eql(422);
           res.body.message.should.be.eql('wrong input provided');
+          done();
         });
+    });
+  });
 
-      done();
+  describe('PATCH /user/:userId/verify', () => {
+    let adminToken;
+
+    before((done) => {
+      const adminLoginDetails = {
+        email: 'quickuser2@quick-cred.test',
+        password: 'dummypass1234'
+      };
+      request.post('/api/v1/auth/signin')
+        .send(adminLoginDetails).end((err, res) => {
+          ({ token: adminToken } = res.body.data);
+          done();
+        });
+    });
+
+    it('should verify a user', (done) => {
+      request.patch('/api/v1/users/1/verify')
+        .set('authorization', adminToken)
+        .end((err, res) => {
+          res.status.should.be.eql(200);
+          res.body.data.status.should.be.eql('verified');
+          done();
+        });
     });
   });
 });
-

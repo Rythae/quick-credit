@@ -113,12 +113,12 @@ describe('Loan', () => {
         tenor: 12
       };
 
-      request.post(`/api/v1/loans`)
+      request.post('/api/v1/loans')
         .send(newLoan)
         .set('authorization', token)
         .end((err, res) => {
           res.status.should.be.eql(201);
-          done(); 
+          done();
         });
     });
   });
