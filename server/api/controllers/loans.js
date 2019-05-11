@@ -1,5 +1,6 @@
 import loans from '../../dummyModels/loans';
 import users from '../../dummyModels/users';
+import repayments from '../../dummyModels/repayments';
 
 /**
  * @exports
@@ -8,12 +9,17 @@ import users from '../../dummyModels/users';
  */
 class LoansController {
   /**
-   * @staticmethod
+   * @static
    * @param {object} req - Request object
    * @param {object} res - Response object
    * @return {json} res.json
    */
-  static async getAUsersLoan(req, res) {
+  static async getAllLoans(req, res) {
+     // get all repayments under each loan
+    loans.forEach(loan => {
+      loan.repayments = repayments.filter(paymentItem => paymentItem.loanId === loan.id)
+    });
+    
     return res.status(200).send({
       status: 'success',
       data: loans,
@@ -21,7 +27,28 @@ class LoansController {
   }
 
   /**
-   * @staticmethod
+   * @static
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
+  static async getAllUserLoans(req, res) {
+    const userId = req.user.id;
+    const userLoans = loans.filter(item => item.userId === userId);
+
+    // get all repayments under each loan
+    userLoans.forEach(loan => {
+      loan.repayments = repayments.filter(paymentItem => paymentItem.loanId === loan.id)
+    });
+
+    return res.status(200).send({
+      status: 'success',
+      data: userLoans,
+    });
+  }
+
+  /**
+   * @static
    * @param {Object} req - Request object
    * @param {Object} res - Response object
    * @return {JonResponse} - json response with status code

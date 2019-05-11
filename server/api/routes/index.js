@@ -1,14 +1,13 @@
 import { Router } from 'express';
 import authRouter from './auth';
 import loansRouter from './loans';
-import LoansController from '../controllers/loans';
-
+import usersRouter from './users';
 
 const routes = Router();
 
 routes.use('/auth', authRouter);
 routes.use('/loans', loansRouter);
-routes.get('/loans',LoansController.getAUsersLoan);
+routes.use('/users', usersRouter);
 
 
 export default routes;
