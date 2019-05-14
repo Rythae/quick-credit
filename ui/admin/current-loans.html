@@ -14,8 +14,9 @@
     
     <div class="left">
       <ul class="side-ul">
+        <li><a class="side-link back-btn" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a></li>
   			<li><a href="all-loans.html" class="side-link">View all loans</a></li>
-  			<li><a href="current-loans.html" class="side-link">View current loans</a></li>
+  			<li><a href="current-loans.html" class="side-link active">View current loans</a></li>
   			<li><a href="repaid-loans.html" class="side-link">View repaid loans</a></li>
   			<li><a href="all-users.html" class="side-link">View all users</a></li>
   		</ul>
@@ -24,84 +25,91 @@
     <div class="right">
       <div class="main-content">
         <header id="header">
-          <p>Hi,Admin</p>
-      </header>
+          <p>Current Loans</p>
+          <nav class="navi"> 
+            <input type="checkbox" id="toggle" checked>   
+            <label for="toggle" class="button"><span class="fa fa-navicon"></span></label>
+            <section class="menu">
+              <ul>
+                <li><a class="side-link back-btn" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a></li>
+                <li><a href="all-loans.html" class="side-link">View all loan</a></li>
+                <li><a href="current-loans.html" class="side-link">View current loans</a></li>
+                <li><a href="repaid-loans.html" class="side-link">View repaid loans</a></li>
+                <li><a href="all-users.html" class="side-link">View users</a></li>
+              </ul>
+            </section>
+          </nav>
+        </header>
         <div class="wrapper">
-    <!-- Beginning of single item view -->
-    <div class='record-list row'>
-      <div class='column col-6'>
-        <div class="record-item">
-          <span class='order-id'>#121212</span>
-          <span class='amount'>#5000</span>
-          <span class='date'>12 March 2019</span>
-          <a class='btn' href="single-application.html">View</a>
+          <!-- Beginning of single item view -->
+          <div class='record-list row'>
+            <div class='column col-12'>
+              <a href="single-application.html" class='record-item'>
+                <span class='order-id'>Requested by <span class='username'>John Doe</span></span>
+                <span class='amount'>#5000</span>
+                <span class='date'>12 March 2019</span>
+                <button class='btn'>Status</button>
+              </a>
+            </div>
+            <div class='column col-12'>
+              <a href="single-application.html" class='record-item'>
+                <span class='order-id'>Requested by <span class='username'>John Doe</span></span>
+                <span class='amount'>#5000</span>
+                <span class='date'>12 March 2019</span>
+                <button class='btn'>Status</button>
+              </a>
+            </div>
+            <div class='column col-12'>
+              <a href="single-application.html" class='record-item'>
+                <span class='order-id'>Requested by <span class='username'>John Doe</span></span>
+                <span class='amount'>#5000</span>
+                <span class='date'>12 March 2019</span>
+                <button class='btn'>Status</button>
+              </a>
+            </div>
+            <div class='column col-12'>
+              <a href="single-application.html" class='record-item'>
+                <span class='order-id'>Requested by <span class='username'>John Doe</span></span>
+                <span class='amount'>#5000</span>
+                <span class='date'>12 March 2019</span>
+                <button class='btn'>Status</button>
+              </a>
+            </div>
+            <div class='column col-12'>
+              <a href="single-application.html" class='record-item'>
+                <span class='order-id'>Requested by <span class='username'>John Doe</span></span>
+                <span class='amount'>#5000</span>
+                <span class='date'>12 March 2019</span>
+                <button class='btn'>Status</button>
+              </a>
+            </div>
+            <div class='column col-12'>
+              <a href="single-application.html" class='record-item'>
+                <span class='order-id'>Requested by <span class='username'>John Doe</span></span>
+                <span class='amount'>#5000</span>
+                <span class='date'>12 March 2019</span>
+                <button class='btn'>Status</button>
+              </a>
+            </div>
+            <div class='column col-12'>
+              <a href="single-application.html" class='record-item'>
+                <span class='order-id'>Requested by <span class='username'>John Doe</span></span>
+                <span class='amount'>#5000</span>
+                <span class='date'>12 March 2019</span>
+                <button class='btn'>Status</button>
+              </a>
+            </div>
+            <div class='column col-12'>
+              <a href="single-application.html" class='record-item'>
+                <span class='order-id'>Requested by <span class='username'>John Doe</span></span>
+                <span class='amount'>#5000</span>
+                <span class='date'>12 March 2019</span>
+                <button class='btn'>Status</button>
+              </a>
+            </div>
+          </div>
+          <!-- End of single item view -->
         </div>
-      </div>
-      <div class='column col-6'>
-        <div class='record-item'>
-          <span class='order-id'>#121212</span>
-          <span class='amount'>#5000</span>
-          <span class='date'>12 March 2019</span>
-          <a class='btn' href="single-application.html">View</a>
-        </div>
-      </div>
-      <div class='column col-6'>
-        <div class='record-item'>
-          <span class='order-id'>#121212</span>
-          <span class='amount'>#5000</span>
-          <span class='date'>12 March 2019</span>
-          <a class='btn' href="single-application.html">View</a>
-        </div>
-      </div>
-      <div class='column col-6'>
-        <div class='record-item'>
-          <span class='order-id'>#121212</span>
-          <span class='amount'>#5000</span>
-          <span class='date'>12 March 2019</span>
-          <a class='btn' href="single-application.html">View</a>
-        </div>
-      </div>
-      <div class='column col-6'>
-        <div class='record-item'>
-          <span class='order-id'>#121212</span>
-          <span class='amount'>#5000</span>
-          <span class='date'>12 March 2019</span>
-          <a class='btn' href="single-application.html">View</a>
-        </div>
-      </div>
-      <div class='column col-6'>
-        <div class='record-item'>
-          <span class='order-id'>#121212</span>
-          <span class='amount'>#5000</span>
-          <span class='date'>12 March 2019</span>
-          <a class='btn' href="single-application.html">View</a>
-        </div>
-      </div>
-      <div class='column col-6'>
-        <div class='record-item'>
-          <span class='order-id'>#121212</span>
-          <span class='amount'>#5000</span>
-          <span class='date'>12 March 2019</span>
-          <a class='btn' href="single-application.html">View</a>
-        </div>
-      </div>
-      <div class='column col-6'>
-        <div class='record-item'>
-          <span class='order-id'>#121212</span>
-          <span class='amount'>#5000</span>
-          <span class='date'>12 March 2019</span>
-          <a class='btn' href="single-application.html">View</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- End of single item view -->
-
-  </div>
-
- <!--  <div class="page-background">
-    <div class='overlay'></div>
-  </div> -->
       </div>
     </div>
   </div>
