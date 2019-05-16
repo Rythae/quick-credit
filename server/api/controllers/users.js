@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import uuid from 'uuidv4';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import users from '../../dummyModels/users';
@@ -15,9 +16,6 @@ class UsersController {
    * @return {JsonResponse} - the json response
    */
   static userSignup(req, res) {
-    const lastUser = users[users.length - 1];
-    const nextUserId = lastUser.id + 1;
-
     const {
       email,
       password,
@@ -27,9 +25,9 @@ class UsersController {
     } = req.body;
 
     const newUser = {
-      id: nextUserId,
+      id: uuid(),
       email,
-      password: bcrypt.hashSync(password, 10),
+      password: bcrypt.hashSync(password, Number(process.env.SALT_ROUNDS)),
       firstName,
       lastName,
       address,
@@ -40,8 +38,8 @@ class UsersController {
     users.push(newUser);
 
     delete newUser.password;
-    return res.status(201).send({
-      status: 'success',
+    return res.status(201).json({
+      status: 201,
       data: newUser
     });
   }
@@ -57,17 +55,17 @@ class UsersController {
     const user = users.find(item => item.email === email);
 
     if (!user) {
-      return res.status(401).send({
-        status: 'fail',
+      return res.status(401).json({
+        status: 401,
         message: 'wrong login data'
       });
     }
 
-    const passwordsMatch = await bcrypt.compareSync(password, user.password);
+    const isCorrectPassword = await bcrypt.compareSync(password, user.password);
 
-    if (!passwordsMatch) {
-      return res.status(401).send({
-        status: 'fail',
+    if (!isCorrectPassword) {
+      return res.status(401).json({
+        status: 401,
         message: 'wrong login data'
       });
     }
@@ -86,11 +84,14 @@ class UsersController {
 
     const data = {
       id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
       token
     };
 
-    return res.status(200).send({
-      status: 'success',
+    return res.status(200).json({
+      status: 200,
       message: 'login successful',
       data
     });
@@ -103,12 +104,12 @@ class UsersController {
    */
   static async userVerify(req, res) {
     const { userId } = req.params;
-    const user = users.find(item => item.id === Number(userId));
+    const user = users.find(item => item.id === userId);
 
     user.status = 'verified';
 
-    return res.status(200).send({
-      status: 'success',
+    return res.status(200).json({
+      status: 200,
       data: user
     });
   }

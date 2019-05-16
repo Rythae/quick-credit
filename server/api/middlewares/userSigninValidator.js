@@ -1,23 +1,20 @@
-import userSigninJoiSchema from './joiSchemas/userSignin';
 import joi from 'joi';
+import userSigninJoiSchema from './joiSchemas/userSignin';
+import HttpException from '../utils/HttpException';
 
 /**
  * @param  {Object} req - the request object
  * @param  {Object} res - the response object
- * @return {JsonResponse} - the json response
+ * @param  {Function} next - switch to the next route middleware
+ * @return {*} - returns void or next()
  */
 const userSigninValidator = async (req, res, next) => {
   try {
-    await joi.validate(req.body, userSigninJoiSchema)
+    await joi.validate(req.body, userSigninJoiSchema);
     next();
-  } catch(error) {
-    return res.status(422).send({
-      status: 'failed',
-      message: 'wrong input provided',
-      error: error.details[0].message
-    });
+  } catch (error) {
+    return next(new HttpException('UnprocessableEntity', error.details[0].message));
   }
-}
-
+};
 
 export default userSigninValidator;

@@ -1,21 +1,27 @@
+import uuid from 'uuidv4';
+import loans from './loans';
+
 const repayments = [
   {
-    id: 1,
-    loanId: 1,
+    id: uuid(),
+    loanId: loans[0].id,
     createdOn: new Date(),
-    amount: 5000
+    amount: 5000,
+    monthlyInstallment: loans[0].paymentInstallment
   },
   {
-    id: 2,
-    loanId: 2,
+    id: uuid(),
+    loanId: loans[1].id,
     createdOn: new Date(),
-    amount: 7500
+    amount: 7500,
+    monthlyInstallment: loans[1].paymentInstallment
   },
   {
-    id: 3,
-    loanId: 1,
+    id: uuid(),
+    loanId: loans[0].id,
     createdOn: new Date(),
-    amount: 5500
+    amount: 5500,
+    monthlyInstallment: loans[0].paymentInstallment
   },
 ];
 
