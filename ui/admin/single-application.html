@@ -14,20 +14,34 @@
   	
   	<div class="left">
   		<ul class="side-ul">
+        <li><a class="side-link back-btn" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a></li>
   			<li><a href="all-loans.html" class="side-link">View all loan</a></li>
   			<li><a href="current-loans.html" class="side-link">View current loans</a></li>
-  			<li><a href="admin-page.html" class="side-link">View repaid loans</a></li>
+  			<li><a href="repaid-loans.html" class="side-link">View repaid loans</a></li>
   			<li><a href="all-users.html" class="side-link">View users</a></li>
   			<!-- <li><a href="single-application.html" class="side-link">Approve / reject loan</a></li>
-  			<li><a href="admin-page.html" class="side-link">Confirm loan repayment</a></li> -->
+  			<li><a href="repaid-loans.html" class="side-link">Confirm loan repayment</a></li> -->
   		</ul>
   	</div>
 
   	<div class="right">
   		<div class="main-content">
   			<header id="header">
-			  	<p>Hi,Admin</p>
-			</header>
+          <p>Application - #12112</p>
+          <nav class="navi"> 
+            <input type="checkbox" id="toggle" checked>   
+            <label for="toggle" class="button"><span class="fa fa-navicon"></span></label>
+            <section class="menu">
+              <ul>
+                <li><a class="side-link back-btn" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a></li>
+                <li><a href="all-loans.html" class="side-link">View all loan</a></li>
+                <li><a href="current-loans.html" class="side-link">View current loans</a></li>
+                <li><a href="repaid-loans.html" class="side-link">View repaid loans</a></li>
+                <li><a href="all-users.html" class="side-link">View users</a></li>
+              </ul>
+            </section>
+          </nav>
+        </header>
   			<div class="wrapper">
           <!-- Beginning of single item view -->
           <div class='single-item-view'>
@@ -36,7 +50,7 @@
               <div class="value">you@mail.com</div>
             </div>
             <div class="data-section">
-              <div class="title">amount requested</div>
+              <!-- <div class="title">amount requested</div> -->
               <div class="value">#5000</div>
             </div>
             <div class="data-section">
