@@ -14,16 +14,29 @@
   	
   	<div class="left">
       <ul class="side-ul">
-  			<li><a href="loan-request.html" class="side-link">Request loan</a></li>
-  			<li><a href="current-loans.html" class="side-link">View current loans</a></li>
+        <li><a class="side-link back-btn" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a></li>
+        <li><a href="loan-request.html" class="side-link active">Request loan</a></li>
+        <li><a href="current-loans.html" class="side-link">View current loans</a></li>
         <li><a href="loan-history.html" class="side-link">View loan history</a></li>
-  		</ul>
+      </ul>
   	</div>
 
   	<div class="right">
   		<div class="main-content">
   			<header id="header">
-			  	<p>Hi,John</p>
+          <p>Loan Request</p>
+          <nav class="navi"> 
+            <input type="checkbox" id="toggle" checked>   
+            <label for="toggle" class="button"><span class="fa fa-navicon"></span></label>
+            <section class="menu">
+              <ul>
+                <li><a class="side-link back-btn" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a></li>
+                <li><a href="loan-request.html" class="side-link">Request loan</a></li>
+                <li><a href="current-loans.html" class="side-link active">View current loans</a></li>
+                <li><a href="loan-history.html" class="side-link">View loan history</a></li>
+              </ul>
+            </section>
+          </nav>
         </header>
         <form class="regular" action="signup.html">
 

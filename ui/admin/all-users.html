@@ -14,98 +14,194 @@
   	
   	<div class="left">
   		<ul class="side-ul">
+        <li><a class="side-link back-btn" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a></li>
   			<li><a href="all-loans.html" class="side-link">View all loans</a></li>
   			<li><a href="current-loans.html" class="side-link">View current loans</a></li>
   			<li><a href="repaid-loans.html" class="side-link">View repaid loans</a></li>
-  			<li><a href="all-users.html" class="side-link">View all users</a></li>
+  			<li><a href="all-users.html" class="side-link active">View all users</a></li>
   		</ul>
   	</div>
 
   	<div class="right">
   		<div class="main-content">
   			<header id="header">
-			  	<p>Hi,Admin</p>
-			</header>
+          <p>All Users</p>
+          <nav class="navi"> 
+            <input type="checkbox" id="toggle" checked>   
+            <label for="toggle" class="button"><span class="fa fa-navicon"></span></label>
+            <section class="menu">
+              <ul>
+                <li><a class="side-link back-btn" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a></li>
+                <li><a href="all-loans.html" class="side-link">View all loan</a></li>
+                <li><a href="current-loans.html" class="side-link">View current loans</a></li>
+                <li><a href="repaid-loans.html" class="side-link">View repaid loans</a></li>
+                <li><a href="all-users.html" class="side-link">View users</a></li>
+              </ul>
+            </section>
+          </nav>
+        </header>
   			<div class="wrapper">
-          <!-- Beginning of single item view -->
-          <div class='record-list row'>
-            <div class='column col-6'>
-              <div class="record-item">
-                <span class='order-id'>jackson@email.co</span>
-                <span class='amount'>Jackson Keneth</span>
-                <span class='amount'>105, Billings Street Maryland</span>
-                <span class='amount'>7098765345</span>
-                <a class='btn' href="single-user.html">View</a>
-              </div>
+          <!-- Beginning of record list view -->
+          <table class='record-list table-2'>
+            <thead>
+              <tr>
+                <td class='tb-col-1'>Email</td>
+                <td class='tb-col-2'>Name</td>
+                <td class='tb-col-3'>Address</td>
+                <td class='tb-col-4'>Phone Number</td>
+                <td class='tb-col-10'>Actions</td>
+              </tr>
+            </thead>
+            <div class="body-container">
+              <tbody>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='tb-col-1'>jackson@email.co</td>
+                  <td class='tb-col-2'>Jackson Keneth</td>
+                  <td class='tb-col-3'>105, Billings Street Maryland</td>
+                  <td class='tb-col-4'>07098765345</td>
+                  <td class='tb-col-10'>
+                    <a href="single-application.html" class="btn">View</a>
+                  </td>
+                </tr>
+              </tbody>
             </div>
-            <div class='column col-6'>
-              <div class="record-item">
-                <span class='order-id'>jackson@email.co</span>
-                <span class='amount'>Jackson Keneth</span>
-                <span class='amount'>105, Billings Street Maryland</span>
-                <span class='amount'>7098765345</span>
-                <a class='btn' href="single-user.html">View</a>
-              </div>
-            </div>
-            <div class='column col-6'>
-              <div class="record-item">
-                <span class='order-id'>jackson@email.co</span>
-                <span class='amount'>Jackson Keneth</span>
-                <span class='amount'>105, Billings Street Maryland</span>
-                <span class='amount'>7098765345</span>
-                <a class='btn' href="single-user.html">View</a>
-              </div>
-            </div>
-            <div class='column col-6'>
-              <div class="record-item">
-                <span class='order-id'>jackson@email.co</span>
-                <span class='amount'>Jackson Keneth</span>
-                <span class='amount'>105, Billings Street Maryland</span>
-                <span class='amount'>7098765345</span>
-                <a class='btn' href="single-user.html">View</a>
-              </div>
-            </div>
-            <div class='column col-6'>
-              <div class="record-item">
-                <span class='order-id'>jackson@email.co</span>
-                <span class='amount'>Jackson Keneth</span>
-                <span class='amount'>105, Billings Street Maryland</span>
-                <span class='amount'>7098765345</span>
-              <a class='btn' href="single-user.html">View</a>
-              </div>
-            </div>
-            <div class='column col-6'>
-              <div class="record-item">
-                <span class='order-id'>jackson@email.co</span>
-                <span class='amount'>Jackson Keneth</span>
-                <span class='amount'>105, Billings Street Maryland</span>
-                <span class='amount'>7098765345</span>
-                <a class='btn' href="single-user.html">View</a>
-              </div>
-            </div>
-            <div class='column col-6'>
-              <div class="record-item">
-                <span class='order-id'>jackson@email.co</span>
-                <span class='amount'>Jackson Keneth</span>
-                <span class='amount'>105, Billings Street Maryland</span>
-                <span class='amount'>7098765345</span>
-                <a class='btn' href="single-user.html">View</a>
-              </div>
-            </div>
-            <div class='column col-6'>
-              <div class="record-item">
-                <span class='order-id'>jackson@email.co</span>
-                <span class='amount'>Jackson Keneth</span>
-                <span class='amount'>105, Billings Street Maryland</span>
-                <span class='amount'>7098765345</span>
-                <a class='btn' href="single-user.html">View</a>
-              </div>
-            </div>
-            
-          </div>
-          
-          <!-- End of single item view -->
-
+          </table>
+          <!-- End of record list view -->
         </div>
   		</div>
   	</div>
