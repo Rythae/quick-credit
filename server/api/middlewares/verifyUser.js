@@ -1,3 +1,5 @@
+import HttpException from '../utils/HttpException';
+
 /**
  * @param  {Object} req - the request Object
  * @param  {Object} res - the response object
@@ -5,13 +7,10 @@
  * @return {JsonResponse} - the json response
  */
 const verifyUser = (req, res, next) => {
-	if(req.user.id !== Number(req.params.userId)) {
-		return res.status(403).send({
-			status: 'failed',
-			message: 'Unauthorised user',
-		});
-	}
-	next();
+  if (req.user.id !== req.params.userId) {
+    return next(new HttpException('Unauthorised'));
+  }
+  next();
 };
 
 export default verifyUser;

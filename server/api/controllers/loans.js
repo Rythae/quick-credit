@@ -1,6 +1,6 @@
+import uuid from 'uuidv4';
 import loans from '../../dummyModels/loans';
 import users from '../../dummyModels/users';
-import repayments from '../../dummyModels/repayments';
 
 /**
  * @exports
@@ -16,24 +16,20 @@ class LoansController {
    */
   static async getAllLoans(req, res) {
     // get all repayments under each loan
-    let { status, repaid } = req.query;
-    
+    const { status, repaid } = req.query;
+
     let allLoans;
-    if(status === 'approved' && repaid === 'true') {
+    if (status === 'approved' && repaid === 'true') {
       allLoans = loans.filter(item => item.status === 'approved' && item.repaid === true);
-    } else if(status === 'approved' && repaid === 'false') {
+    } else if (status === 'approved' && repaid === 'false') {
       allLoans = loans.filter(item => item.status === 'approved' && item.repaid === false);
     } else {
       // all existing loans unfiltered
       allLoans = loans;
     }
- 
-    allLoans.forEach(loan => {
-      loan.repayments = repayments.filter(paymentItem => paymentItem.loanId === loan.id)
-    });
-    
-    return res.status(200).send({
-      status: 'success',
+
+    return res.status(200).json({
+      status: 200,
       data: allLoans,
     });
   }
@@ -48,13 +44,8 @@ class LoansController {
     const userId = req.user.id;
     const userLoans = loans.filter(item => item.userId === userId);
 
-    // get all repayments under each loan
-    userLoans.forEach(loan => {
-      loan.repayments = repayments.filter(paymentItem => paymentItem.loanId === loan.id)
-    });
-
-    return res.status(200).send({
-      status: 'success',
+    return res.status(200).json({
+      status: 200,
       data: userLoans,
     });
   }
@@ -66,8 +57,6 @@ class LoansController {
    * @return {JonResponse} - json response with status code
    */
   static async createLoanRequest(req, res) {
-    const lastLoan = loans[loans.length - 1];
-    const nextLoanId = lastLoan ? lastLoan.id + 1 : 1;
     const user = users.find(item => item.id === req.user.id);
 
     const { amount, tenor } = req.body;
@@ -75,7 +64,7 @@ class LoansController {
     const repaymentAmount = Number(amount) + interest;
 
     const newLoan = {
-      id: nextLoanId,
+      id: uuid(),
       email: user.email,
       tenor,
       amount,
@@ -83,13 +72,15 @@ class LoansController {
       repaid: false,
       status: 'pending',
       interest,
+      userId: user.id,
+      balance: repaymentAmount,
       createdOn: new Date()
     };
 
     loans.push(newLoan);
 
-    return res.status(201).send({
-      status: 'success',
+    return res.status(201).json({
+      status: 201,
       data: newLoan,
     });
   }
@@ -103,10 +94,29 @@ class LoansController {
   static async getSingleLoan(req, res) {
     const { loanId } = req.params;
 
-    const loan = loans.find(item => item.id === Number(loanId));
+    const loan = loans.find(item => item.id === loanId);
 
-    return res.status(200).send({
-      status: 'success',
+    return res.status(200).json({
+      status: 200,
+      data: loan,
+    });
+  }
+
+  /**
+   * @static
+   * @param {Object} req - Request object
+   * @param {Object} res - Response object
+   * @return {JonResponse} - json response with status code
+   */
+  static async changeLoanStatus(req, res) {
+    const { loanId } = req.params;
+    const { status } = req.body;
+
+    const loan = loans.find(item => item.id === loanId);
+    loan.status = status;
+
+    return res.status(200).json({
+      status: 200,
       data: loan,
     });
   }

@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import HttpException from '../utils/HttpException';
 
 dotenv.config();
 
@@ -15,19 +16,13 @@ const tokenVerification = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
-        return res.status(403).send({
-          status: 'fail',
-          message: 'invalid token'
-        });
+        return next(new HttpException('InvalidToken'));
       }
       req.user = decoded;
       next();
     });
   } else {
-    return res.status(403).send({
-      status: 'fail',
-      message: 'no token found'
-    });
+    return next(new HttpException('MissingToken'));
   }
 };
 

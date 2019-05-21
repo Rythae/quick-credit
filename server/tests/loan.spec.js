@@ -12,6 +12,7 @@ chai.should();
 
 describe('Loan', () => {
   const invalidToken = 'asdasdasdsasd';
+  let loanId;
 
   describe('GET /loans', () => {
     let adminToken;
@@ -56,7 +57,7 @@ describe('Loan', () => {
     it('should fail to return all loans when invalid token is supplied', (done) => {
       request.get(`/api/v1/loans?token=${invalidToken}`)
         .end((err, res) => {
-          res.status.should.be.eql(403);
+          res.status.should.be.eql(401);
           res.body.message.should.be.eql('invalid token');
           done();
         });
@@ -65,7 +66,7 @@ describe('Loan', () => {
     it('should fail to return all loans when invalid token is supplied', (done) => {
       request.get('/api/v1/loans')
         .end((err, res) => {
-          res.status.should.be.eql(403);
+          res.status.should.be.eql(401);
           res.body.message.should.be.eql('no token found');
           done();
         });
@@ -117,6 +118,7 @@ describe('Loan', () => {
         .send(newLoan)
         .set('authorization', token)
         .end((err, res) => {
+          loanId = res.body.data.id;
           res.status.should.be.eql(201);
           done();
         });
@@ -139,11 +141,11 @@ describe('Loan', () => {
     });
 
     it('should return a specific loan', (done) => {
-      request.get('/api/v1/loans/1')
+      request.get(`/api/v1/loans/${loanId}`)
         .set('authorization', adminToken)
         .end((err, res) => {
           res.status.should.be.eql(200);
-          res.body.data.id.should.be.eql(1);
+          res.body.data.id.should.be.eql(loanId);
           done();
         });
     });

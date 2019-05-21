@@ -1,17 +1,16 @@
+import HttpException from '../utils/HttpException';
+
 /**
  * @param  {Object} req - the request Object
  * @param  {Object} res - the response object
  * @param  {Function} next - switch to the next route middleware
- * @return {JsonResponse} - the json response
+ * @return {*} - returns void or next()
  */
 const verifyAdmin = (req, res, next) => {
-	if(!req.user.isAdmin) {
-		return res.status(403).send({
-			status: 'failed',
-			message: 'Unauthorised user',
-		});
-	}
-	next();
+  if (!req.user.isAdmin) {
+    return next(new HttpException('Unauthorised'));
+  }
+  next();
 };
 
 export default verifyAdmin;
