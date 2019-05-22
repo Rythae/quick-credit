@@ -58,7 +58,7 @@ class Loan {
    * @returns {object} record object
    */
   async getByField(field, value) {
-    const text = `SELECT * FROM users WHERE ${field} = $1`;
+    const text = `SELECT * FROM users WHERE "${field}" = $1`;
     try {
       const { rows } = await db.query(text, [value]);
       return rows[0];

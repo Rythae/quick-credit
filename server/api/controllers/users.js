@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
+import bcrypt from 'bcryptjs';
 import users from '../../dummyModels/users';
 import UserModel from '../../models/User';
+import hashPassword from '../utils/hash';
 
 dotenv.config();
 
@@ -27,9 +28,9 @@ class UsersController {
 
     const newUser = await User.create({
       email,
+      password: hashPassword(password),
       firstName,
       lastName,
-      password: bcrypt.hashSync(password, Number(process.env.SALT_ROUNDS)),
       address,
       isAdmin: false,
       status: 'unverified'
@@ -50,7 +51,7 @@ class UsersController {
    */
   static async userSignin(req, res) {
     const { email, password } = req.body;
-    const user = users.find(item => item.email === email);
+    const user = await User.getByField('email', email);
 
     if (!user) {
       return res.status(401).json({
