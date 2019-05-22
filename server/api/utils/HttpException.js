@@ -1,12 +1,12 @@
 /**
-* export
-*/
+ * export
+ */
 class HttpException {
   /**
-  * @param {String} type - type of http error
-  * @param {Object} error - error object
-  * @param {String} message - the error message
-  */
+   * @param {String} type - type of http error
+   * @param {Object} error - error object
+   * @param {String} message - the error message
+   */
   constructor(type, error) {
     this.error = error;
     let message;
