@@ -11,7 +11,7 @@ const Loan = new LoanModel();
 const Repayment = new RepaymentModel();
 
 const seedDatabase = async () => {
-  const salt = bcrypt.genSaltSync(Number(process.env.SALT_ROUNDS));
+  const salt = bcrypt.genSaltSync(10);
   const users = [
     {
       email: 'quickuser1@quick-cred.test',
