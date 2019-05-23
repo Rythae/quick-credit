@@ -14,7 +14,9 @@ const {
   changeLoanStatus,
 } = LoansController;
 
-const { getRepaymentsForALoan } = RepaymentsController;
+
+const { getRepaymentsForALoan, postRepaymentsForALoan } = RepaymentsController;
+
 
 loansRouter.get('/',
   tokenVerification,
@@ -38,5 +40,9 @@ loansRouter.patch('/:loanId',
 loansRouter.get('/:loanId/repayments',
   tokenVerification,
   getRepaymentsForALoan);
+
+loansRouter.post('/:loanId/repayments',
+  tokenVerification,
+  postRepaymentsForALoan);
 
 export default loansRouter;

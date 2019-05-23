@@ -11,7 +11,7 @@ dotenv.config();
  * @return {JsonResponse} - the json response
  */
 const tokenVerification = (req, res, next) => {
-  const token = req.headers.authorization || req.query.token;
+  const token = req.headers.Authorization;
 
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {

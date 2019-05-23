@@ -1,6 +1,5 @@
-import { Pool } from 'pg';
 import logger from '../services/logger';
-import connectionString from './config';
+import db from '../db';
 import seedDatabase from './seed';
 
 const queryText = `
@@ -22,35 +21,35 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS loans (
   "id" UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-  "email" VARCHAR(100) UNIQUE NOT NULL,
+  "email" VARCHAR(100) NOT NULL,
   "tenor" INTEGER NOT NULL,
-  "amount" INTEGER NOT NULL,
+  "amount" VARCHAR(11) NOT NULL,
   "paymentInstallment" VARCHAR(11) NOT NULL,
   "repaid" BOOLEAN NOT NULL,
   "status" VARCHAR(11) NOT NULL,
   "interest" VARCHAR(11) NOT NULL,
   "userId" UUID NOT NULL,
-  "balance" INTEGER NOT NULL,
+  "balance" VARCHAR(11) NOT NULL,
   "createdOn" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS repayments (
   "id" UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
   "loanId" UUID NOT NULL,
-  "amount" INTEGER NOT NULL,
+  "amount" VARCHAR(11) NOT NULL,
   "monthlyInstallment" VARCHAR(11) NOT NULL,
   "createdOn" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 `;
 
 
-const client = new Pool({ connectionString });
++
 
-client.on('connect', () => {
+db.query(queryText)
+  .then(result => { logger.info(result);
+  db.on('connect', () => {
   logger.info('CONNECTED TO DATABASE');
   seedDatabase();
-});
-
-client.query(queryText)
-  .then(result => logger.info(result))
+});})
   .catch(error => logger.error(error));
+

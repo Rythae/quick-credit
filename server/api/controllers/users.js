@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
+import bcrypt from 'bcryptjs';
 import users from '../../dummyModels/users';
 import UserModel from '../../models/User';
+import hashPassword from '../utils/hash';
+import ResponseHelper from '../utils/ResponseHelper';
 
-dotenv.config();
 
 const User = new UserModel();
 /**
@@ -27,19 +28,20 @@ class UsersController {
 
     const newUser = await User.create({
       email,
+      password: hashPassword(password),
       firstName,
       lastName,
-      password: bcrypt.hashSync(password, Number(process.env.SALT_ROUNDS)),
       address,
       isAdmin: false,
       status: 'unverified'
     });
 
     delete newUser.password;
-    return res.status(201).json({
-      status: 201,
-      data: newUser
-    });
+    ResponseHelper.success(res, 201, newUser);
+    // return res.status(201).json({
+    //   status: 201,
+    //   data: newUser
+    // });
   }
 
 
@@ -50,22 +52,24 @@ class UsersController {
    */
   static async userSignin(req, res) {
     const { email, password } = req.body;
-    const user = users.find(item => item.email === email);
+    const user = await User.getByField('email', email);
 
     if (!user) {
-      return res.status(401).json({
-        status: 401,
-        message: 'wrong login data'
-      });
+      ResponseHelper.error(res, 401);
+      // return res.status(401).json({
+      //   status: 401,
+      //   message: 'wrong login data'
+      // });
     }
 
     const isCorrectPassword = await bcrypt.compareSync(password, user.password);
 
     if (!isCorrectPassword) {
-      return res.status(401).json({
-        status: 401,
-        message: 'wrong login data'
-      });
+      ResponseHelper.error(res, 401);
+      // return res.status(401).json({
+      //   status: 401,
+      //   message: 'wrong login data'
+      // });
     }
 
     const expiryTime = 60 * 60; // 1 hour
@@ -88,29 +92,14 @@ class UsersController {
       token
     };
 
-    return res.status(200).json({
-      status: 200,
-      message: 'login successful',
-      data
-    });
+    ResponseHelper.success(res, 200, data);
+    // return res.status(200).json({
+    //   status: 200,
+    //   message: 'login successful', 
+    //   data
+    // });
   }
 
-  /**
-   * @param  {Object} req - the request object
-   * @param  {Object} res - the response object
-   * @return {JsonResponse} - the json response
-   */
-  static async userVerify(req, res) {
-    const { userId } = req.params;
-    const user = users.find(item => item.id === userId);
-
-    user.status = 'verified';
-
-    return res.status(200).json({
-      status: 200,
-      data: user
-    });
   }
-}
 
 export default UsersController;

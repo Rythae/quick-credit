@@ -31,39 +31,8 @@ class Loan {
       const { rows } = await db.query(createQuery, values);
       return rows[0];
     } catch (error) {
-      logger.error(error);
-      return error;
-    }
-  }
-
-  /**
-   * Get Loan by id
-   * @param {String} id - the id primary key
-   * @returns {object} record object
-   */
-  async getById(id) {
-    const text = 'SELECT * FROM loans WHERE id = $1';
-    try {
-      const { rows } = await db.query(text, [id]);
-      return rows[0];
-    } catch (error) {
-      return error;
-    }
-  }
-
-  /**
-   * Get Loan by a field
-   * @param {String} field - the field
-   * @param {String} value - the value
-   * @returns {object} record object
-   */
-  async getByField(field, value) {
-    const text = `SELECT * FROM users WHERE ${field} = $1`;
-    try {
-      const { rows } = await db.query(text, [value]);
-      return rows[0];
-    } catch (error) {
-      return error;
+      // logger.error(error);
+      throw error;
     }
   }
 }
