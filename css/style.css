@@ -8,6 +8,13 @@
   outline: none;
 }
 
+body {
+  background-image: url('../img/newbg.jpg');
+  background-size:  cover;
+  background-position: -400px -180px;
+
+}
+
 input {
   padding: 10px 10px;
   display: block;
@@ -37,7 +44,9 @@ select {
   display: inline-block;
   text-decoration: none;
   font-size: 15px;
-  font-family: Helvetica, sans-serif
+  font-family: Helvetica, sans-serif;
+  border-radius: 4px;
+  width: 100%;
 }
 
 .btn.btn-danger {
@@ -54,23 +63,79 @@ label {
   position: relative;
   z-index: 1;
   padding-bottom: 100px;
+  /* height: 100%; */
 }
 
-.page-background {
-  background-image: url('../img/newbg.jpg');
-  background-size:  cover;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  z-index: 0;
-}
 
-.page-background .overlay {
-  background: #000000a1;
+.blur {
+  background-color: #000000a1;
   height: 100%;
   width: 100%;
 }
+/*How it works on Landing */
+
+.middle-wrapper {
+  background: #f1f2f3;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding-left: 5%;
+  height: 660px;
+  margin-top: 50px;
+ /* display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 900px;
+  position: absolute;
+  top: 100vh;
+  z-index: 5;
+  padding-top: 20px;
+  padding-bottom: 20px;*/
+}
+
+.how-box {
+  width: 150px;
+  height: 150px;
+  background: #f1f2f3;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
+  width: 150px;
+  text-align: center;
+}
+
+.how-header {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/*ends */
+
+/* footer */
+
+/*.footer-page {
+  position: relative;
+  background: blue;
+}*/
+
+footer {
+  background: red;
+  position: relative;
+  bottom: 0;
+  height: 250px; 
+  width: 100%;
+}
+
 /*Navigation begins */
 
 nav::after {
@@ -95,16 +160,17 @@ li {
 }
 
 
-.landing-link:hover {
-    background-color: #00d0ff;
-    color: #fff;
-    box-shadow: 0 1rem 2rem rgba(#000, .15);
-  }
+/*.landing-link:hover {
+  background-color: transparent;*/
+  /* color: #fff; */
+/*  box-shadow: 0 1rem 2rem rgba(#000, .15);
+}*/
 
 .top-side-ul {
   list-style: none;
   float: right;
 }
+
 /*ends */
 
 
@@ -115,6 +181,7 @@ li {
   position: absolute;
   width: 100%;
   min-height: 951px;
+  overflow-x: scroll;
 }
 
 .wrapper-admin {
@@ -197,6 +264,7 @@ a:-webkit-any-link {
   height: 50px;
   display: flex;
   align-items: center;
+  width: 100% !important;
 }
 
 #header > p {
@@ -286,9 +354,9 @@ form {
 }
 /* End of Article section */
 
-
+/*ends */
 /* Records list */
-
+/*
 .record-item > span {
    margin-bottom: 5px;
    font-size: 15px;
@@ -314,7 +382,6 @@ form {
 
 .record-item > span.amount {
   font-size: 15px;
-  /* display: inline; */
 }
 
 .record-item > .btn {
@@ -338,6 +405,120 @@ a.record-item {
 a.record-item:hover {
   background-color: #e8fbff;
 }
+*/
+
+table.record-list {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+table.record-list td {
+  padding: 10px 10px;
+  display: flex;
+  float: left;
+  width: 218px;
+  height: 50px;
+  /* background: #e6e6e6; */
+  border: 1px solid #e4e4e4;
+  /* justify-content: center; */
+  align-items: center;
+  border-bottom: 0;
+  border-right: 1px solid white;
+}
+
+table.record-list * {
+  display: block;
+  width: max-content;
+}
+
+table.record-list tr {display: flex;width: 100%;}
+
+table.record-list thead {
+  background-color: #07b8dc;
+  overflow: auto;
+  /* width: 100%; */
+  color: white;
+}
+table.record-list thead td {
+  display: flex;
+  align-items: center;
+}
+table.record-list tbody {height: 600px;overflow-y: scroll;/* width: 100%; */}
+
+table.record-list td.tb-col-1 {
+  width: 200px;
+}
+table.record-list td.tb-col-2 {
+  width: 60px;
+}
+table.record-list td.tb-col-3 {
+  width: 100px;
+}
+table.record-list td.tb-col-4 {
+  width: 100px;
+}
+table.record-list td.tb-col-5 {
+  width: 100px;
+}
+table.record-list td.tb-col-6 {
+  width: 100px;
+}
+table.record-list td.tb-col-7 {
+  width: 100px;
+}
+table.record-list td.tb-col-8 {
+  width: 100px;
+}
+table.record-list td.tb-col-9 {
+  width: 150px;
+}
+table.record-list td.tb-col-10 {
+  width: 150px;
+}
+table.record-list thead td {
+  border: 1px solid white;
+  border-left: 0px;
+  border-bottom: 0px;
+}
+table.record-list td:first-child {
+  border-left: 0px;
+}
+table.record-list td:last-child {
+  border-right: 0px;
+}
+table.record-list {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+}
+table.record-list tbody tr:nth-child(2n-1) {
+  background-color: #effeff;
+}
+table.record-list .btn {
+  padding: 5px;
+  font-size: 12px;
+  width: 70px;
+  text-align: center;
+}
+table.record-list.table-2 td.tb-col-1 {
+  width: 150px;
+  flex: 2;
+}
+table.record-list.table-2 td.tb-col-2 {
+  width: 180px;
+  flex: 2;
+}
+table.record-list.table-2 td.tb-col-3 {
+  width: 350px;
+  flex: 3;
+}
+table.record-list.table-2 td.tb-col-4 {
+  width: 100px;
+}
+
 /* End of Records list */
 
 
@@ -373,6 +554,10 @@ a.record-item:hover {
   font-size: 25px;
   display: inline-block;
   margin-top: 33px;
+  border: none;
+  font-variant-caps: all-small-caps;
+  width: 210px;
+  border-radius: 4px;
 }
 
 .left {
@@ -465,56 +650,6 @@ input#toggle:checked ~ .menu {
   }
 }
 
-/* Tablet Landscape | desktop and above - large */
-@media (min-width: 60em) {
-  .navigation_nav .navigation_checkbox .navigation_button .navigation_icon {
-    display: none; 
-  }
 
-  .navi input#toggle + label {
-    display: none;
-  }
-
-  input#toggle:checked ~ .menu {
-    display: none;
-  }
-
-  .left {
-    background-color: #08b8dc;
-    height: 100%;
-    width: 13%;
-    position: absolute;
-    display: block;
-  }
-
-  .main-content {
-    background-color: #cecece;
-    position: absolute;
-    width: 87%;
-    min-height: 951px;
-  }
-
-  .right {
-    height: 100%;
-    width: 87%;
-    margin-left: 13%;
-    /* position: absolute; */
-    bottom: 0;
-  }
-
-  form {
-    max-width: 60%;
-  }
-
-  .single-item-view {
-    max-width: 60%;
-  }
-
-  .wrapper-admin {
-    background: #07b8dc;
-  }
-
-  body {
-    background: #07b8dc;
-  }
+/*ends */
 }
