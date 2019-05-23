@@ -45,6 +45,79 @@ class UsersController {
   }
 
 
+  /**
+   * @param  {Object} req - the request object
+   * @param  {Object} res - the response object
+   * @return {JsonResponse} - the json response
+   */
+  static async userSignin(req, res) {
+    const { email, password } = req.body;
+    const user = await User.getByField('email', email);
+
+    if (!user) {
+      ResponseHelper.error(res, 401);
+      // return res.status(401).json({
+      //   status: 401,
+      //   message: 'wrong login data'
+      // });
+    }
+
+    const isCorrectPassword = await bcrypt.compareSync(password, user.password);
+
+    if (!isCorrectPassword) {
+      ResponseHelper.error(res, 401);
+      // return res.status(401).json({
+      //   status: 401,
+      //   message: 'wrong login data'
+      // });
+    }
+
+    const expiryTime = 60 * 60; // 1 hour
+
+    const token = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: expiryTime }
+    );
+
+    const data = {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      token
+    };
+
+    ResponseHelper.success(res, 200, data);
+    // return res.status(200).json({
+    //   status: 200,
+    //   message: 'login successful', 
+    //   data
+    // });
+  }
+
+  /**
+   * @param  {Object} req - the request object
+   * @param  {Object} res - the response object
+   * @return {JsonResponse} - the json response
+   */
+  static async userVerify(req, res) {
+    const { userId } = req.params;
+    const user = User.getByField('userId', userId);
+
+    user.status = 'verified';
+
+    ResponseHelper.success(res, 200, user);
+    // return res.status(200).json({
+    //   status: 200,
+    //   data: user
+    // });
+  }
+
 
   }
 
