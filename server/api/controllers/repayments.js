@@ -7,12 +7,5 @@ import ResponseHelper from '../utils/ResponseHelper';
 
 const Repayment = new RepaymentModel();
 const Loan = new LoanModel();
-/**
- * @exports
- * @class RepaymentsController
- *
- */
-class RepaymentsController {
-  
-}
+
 export default RepaymentsController;
