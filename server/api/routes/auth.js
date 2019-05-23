@@ -7,6 +7,6 @@ import userSigninValidator from '../middlewares/userSigninValidator';
 const authRouter = Router();
 
 authRouter.post('/signup', userSignupValidator, UsersController.userSignup);
-// authRouter.post('/signin', userSigninValidator, UsersController.userSignin);
+authRouter.post('/signin', userSigninValidator, UsersController.userSignin);
 
 export default authRouter;
