@@ -72,23 +72,6 @@ label {
   height: 100%;
   width: 100%;
 }
-
-/*.page-background {
-  background-image: url('../img/newbg.jpg');
-  background-size:  cover;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  z-index: 0;
-}
-
-.page-background .overlay {
-  background: #000000a1;
-  height: 100%;
-  width: 100%;
-}*/
-
 /*How it works on Landing */
 
 .middle-wrapper {
