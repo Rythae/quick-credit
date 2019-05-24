@@ -1,0 +1,104 @@
+/* Sign up & Sign in starts */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.centered-content {
+  text-align: center;
+  font-size: 50px;
+  color: #333;
+  margin-right: 10%;
+}
+
+.side-link.back-btn {
+  height: 50px;
+  background-color: whitesmoke;
+  font-size: 17px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.side-link.back-btn.no-bg {
+  background-color: transparent;
+  color: #333;
+  transition: all 300ms ease-in-out;
+  position: absolute;
+  max-width: 250px;
+  right: 20px;
+  top: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+
+
+.left {
+    background-image: url('../img/newbg.jpg');
+    background-size:  cover;
+    position: fixed;
+    height: 100vh;
+    width: 50%;
+    position: absolute;
+    display: block;
+  }
+
+
+  .right {
+    height: 100vh
+    width: 50%;
+     position: absolute; 
+    top: 100;
+    left: 50%;
+  }
+
+  input {
+  padding: 10px 10px;
+  display: block;
+  width: 500px;
+  margin-bottom: 20px;
+  border: 1px solid #b9b9b9;
+  font-size: 15px;
+  border-radius: 4px;
+  /*width: 100%;*/
+}
+
+.btn-1 {
+  padding: 10px 10px;
+  display: block;
+  width: 500px;
+  margin-bottom: 20px;
+  border: 1px solid #4169e1;
+  font-size: 15px;
+  border-radius: 4px;
+  color: white;
+  background-color: #4169e1;
+  cursor: pointer;
+}
+
+.btn-1:hover {
+  background: #034388;
+}
+
+h2, p {
+  color: white;
+  padding: 10px;
+  letter-spacing: 0.2rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+h1 {
+  padding-bottom: 10px;
+}
+
+
+/* ends */

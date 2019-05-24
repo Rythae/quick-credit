@@ -75,12 +75,21 @@ label {
 /*How it works on Landing */
 
 .middle-wrapper {
-  background: #f1f2f3;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  padding-left: 5%;
-  height: 660px;
-  margin-top: 50px;
+    background: #f1f2f3;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-left: 5%;
+    height: 500px;
+    margin-top: 50px;
+    padding-top: 180px;
+}
+
+.heading-1 {
+    position: absolute;
+    top: 62%;
+    left: 30%;
+    right: 30%;
+  }
  /* display: flex;
   flex-flow: wrap;
   justify-content: center;
@@ -91,7 +100,6 @@ label {
   z-index: 5;
   padding-top: 20px;
   padding-bottom: 20px;*/
-}
 
 .how-box {
   width: 150px;
@@ -129,11 +137,15 @@ h3 {
 }*/
 
 footer {
-  background: red;
+  background:  #07b8dc;
   position: relative;
   bottom: 0;
-  height: 250px; 
+  height: 50px; 
   width: 100%;
+  text-align: center;
+  padding-top: 15px;
+  color: whitesmoke;
+  font-weight: bold;
 }
 
 /*Navigation begins */
@@ -157,6 +169,7 @@ li {
   padding: 10px;
   display: inline-block;
   text-align: center;
+  background-color: #07b8dc;
 }
 
 
@@ -647,6 +660,79 @@ input#toggle:checked ~ .menu {
   .landing-area .upper-text {
     color: #00d0ff;
     font-size: 140%;
+  }
+
+  /* Tablet Landscape | desktop and above - large */
+@media (min-width: 60em) {
+  .navigation_nav .navigation_checkbox .navigation_button .navigation_icon {
+    display: none; 
+  }
+
+  .navi input#toggle + label {
+    display: none;
+  }
+
+  input#toggle:checked ~ .menu {
+    display: none;
+  }
+
+  .left {
+    background-color: #08b8dc;
+    height: 100%;
+    width: 13%;
+    position: absolute;
+    display: block;
+  }
+
+  .main-content {
+    background-color: #cecece;
+    position: absolute;
+    width: 87%;
+    min-height: 951px;
+  }
+
+  .right {
+    height: 100%;
+    width: 87%;
+    margin-left: 13%;
+    /* position: absolute; */
+    bottom: 0;
+  }
+
+  form {
+    max-width: 60%;
+  }
+
+  .single-item-view {
+    max-width: 60%;
+  }
+
+  .wrapper-admin {
+    background: #07b8dc;
+  }
+/*
+  body {
+    background: #07b8dc;
+  }*/
+}
+
+  .middle-wrapper {
+    background: #f1f2f3;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-left: 5%;
+    height: 500px;
+    margin-top: 50px;
+    padding-top: 180px;
+    text-align: center;
+    letter-spacing: 1.9px;
+}
+
+.heading-1 {
+    position: absolute;
+    top: 100%;
+    left: 40%;
+    right: 30%;
   }
 }
 
