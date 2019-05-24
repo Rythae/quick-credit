@@ -39,7 +39,8 @@ describe('Loan', () => {
     });
 
     it('should return all loans', (done) => {
-      request.get(`/api/v1/loans?token=${adminToken}`)
+      request.get('/api/v1/loans')
+        .set('authorization', adminToken)
         .end((err, res) => {
           res.status.should.be.eql(200);
           done();
@@ -47,7 +48,8 @@ describe('Loan', () => {
     });
 
     it('should fail to return all loans when user is not admin', (done) => {
-      request.get(`/api/v1/loans?token=${userToken}`)
+      request.get('/api/v1/loans')
+        .set('authorization', userToken)
         .end((err, res) => {
           res.status.should.be.eql(403);
           done();
@@ -55,7 +57,8 @@ describe('Loan', () => {
     });
 
     it('should fail to return all loans when invalid token is supplied', (done) => {
-      request.get(`/api/v1/loans?token=${invalidToken}`)
+      request.get('/api/v1/loans')
+        .set('authorization', invalidToken)
         .end((err, res) => {
           res.status.should.be.eql(401);
           res.body.message.should.be.eql('invalid token');

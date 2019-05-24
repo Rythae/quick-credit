@@ -64,6 +64,21 @@ class User {
       return error;
     }
   }
+
+  /**
+   * Verify User
+   * @param {String} email - the user's email
+   * @returns {object} record object
+   */
+  async verifyUser(email) {
+    const text = `UPDATE users SET status = 'verified' WHERE email = '${email}' RETURNING *`;
+    try {
+      const { rows } = await db.query(text);
+      return rows[0];
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default User;

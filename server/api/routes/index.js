@@ -6,8 +6,8 @@ import usersRouter from './users';
 const routes = Router();
 
 routes.use('/auth', authRouter);
-// routes.use('/loans', loansRouter);
-// routes.use('/users', usersRouter);
+routes.use('/loans', loansRouter);
+routes.use('/users', usersRouter);
 
 
 export default routes;

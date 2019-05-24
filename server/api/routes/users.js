@@ -7,10 +7,10 @@ import verifyAdmin from '../middlewares/verifyAdmin';
 
 const usersRouter = Router();
 
-const { getAllUserLoans } = LoansController;//////////////////////////
+const { getAllUserLoans } = LoansController;
 const { userVerify } = UsersController;
 
-usersRouter.get('/:userId/loans', tokenVerification, verifyUser, getAllUserLoans); ////////
-usersRouter.patch('/:userId/verify', tokenVerification, verifyAdmin, userVerify);
+usersRouter.get('/:userId/loans', tokenVerification, verifyUser, getAllUserLoans);
+usersRouter.patch('/:email/verify', tokenVerification, verifyAdmin, userVerify);
 
 export default usersRouter;
