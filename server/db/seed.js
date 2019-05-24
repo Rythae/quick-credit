@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import UserModel from '../models/User';
 import LoanModel from '../models/Loan';
 import RepaymentModel from '../models/Repayment';
+import hashPassword from '../api/utils/hash';
 
 dotenv.config();
 
@@ -11,13 +12,12 @@ const Loan = new LoanModel();
 const Repayment = new RepaymentModel();
 
 const seedDatabase = async () => {
-  const salt = bcrypt.genSaltSync(10);
   const users = [
     {
       email: 'quickuser1@quick-cred.test',
       firstName: 'Rita',
       lastName: 'Smith',
-      password: bcrypt.hashSync('dummypass123', salt),
+      password: hashPassword('dummypass123'),
       address: '5, Smith Road, Smith Town',
       isAdmin: false,
       status: 'verified'
@@ -26,7 +26,7 @@ const seedDatabase = async () => {
       email: 'quickuser2@quick-cred.test',
       firstName: 'Jane',
       lastName: 'Dough',
-      password: bcrypt.hashSync('dummypass1234', salt),
+      password: hashPassword('dummypass1234'),
       address: '7, Smith Road, Smith Town',
       isAdmin: true,
       status: 'verified'
@@ -35,7 +35,7 @@ const seedDatabase = async () => {
       email: 'quickuser3@quick-cred.test',
       firstName: 'Rita',
       lastName: 'Smith',
-      password: bcrypt.hashSync('dummypass123', salt),
+      password: hashPassword('dummypass123'),
       address: '5, Smith Road, Smith Town',
       isAdmin: false,
       status: 'verified'
@@ -49,6 +49,7 @@ const seedDatabase = async () => {
 
   // wait for all queries to resolve for the call to create users
   const insertedUsers = await Promise.all(seedUsers);
+
 
   const loan1 = await Loan.create({
     email: insertedUsers[0].email,

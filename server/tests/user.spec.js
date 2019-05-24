@@ -11,7 +11,7 @@ const request = supertest(app);
 chai.should();
 
 describe('User', () => {
-  let userId;
+  let email;
 
   describe('POST /auth/signup', () => {
     it('should sign up a user', (done) => {
@@ -27,7 +27,7 @@ describe('User', () => {
         .send(user)
         .end((err, res) => {
           res.status.should.be.eql(201);
-          userId = res.body.data.id;
+          ({ email } = res.body.data);
           res.body.data.firstName.should.be.eql('john');
           res.body.data.lastName.should.be.eql('doe');
         });
@@ -66,7 +66,7 @@ describe('User', () => {
         .send(user)
         .end((err, res) => {
           res.status.should.be.eql(200);
-          res.body.message.should.be.eql('login successful');
+          res.body.data.email.should.be.eql(user.email);
           done();
         });
     });
@@ -103,7 +103,7 @@ describe('User', () => {
     });
 
     it('should verify a user', (done) => {
-      request.patch(`/api/v1/users/${userId}/verify`)
+      request.patch(`/api/v1/users/${email}/verify`)
         .set('authorization', adminToken)
         .end((err, res) => {
           res.status.should.be.eql(200);

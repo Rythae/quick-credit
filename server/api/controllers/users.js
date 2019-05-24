@@ -1,7 +1,5 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
-import users from '../../dummyModels/users';
 import UserModel from '../../models/User';
 import hashPassword from '../utils/hash';
 import ResponseHelper from '../utils/ResponseHelper';
@@ -25,23 +23,41 @@ class UsersController {
       lastName,
       address
     } = req.body;
+    const userExists = await User.getByField('email', email);
 
-    const newUser = await User.create({
-      email,
-      password: hashPassword(password),
-      firstName,
-      lastName,
-      address,
-      isAdmin: false,
-      status: 'unverified'
-    });
+    if (userExists) {
+      ResponseHelper.error(res, 409, {
+        message: 'User already exists'
+      });
+    } else {
+      const expiryTime = 60 * 60; // 1 hour
 
-    delete newUser.password;
-    ResponseHelper.success(res, 201, newUser);
-    // return res.status(201).json({
-    //   status: 201,
-    //   data: newUser
-    // });
+      const newUser = await User.create({
+        email,
+        password: hashPassword(password),
+        firstName,
+        lastName,
+        address,
+        isAdmin: false,
+        status: 'unverified',
+      });
+
+      const token = await jwt.sign(
+        {
+          id: newUser.id,
+          email,
+          isAdmin: false,
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: expiryTime }
+      );
+
+      delete newUser.password;
+      const newUserWithToken = Object.assign(newUser, {
+        token
+      });
+      ResponseHelper.success(res, 201, newUserWithToken);
+    }
   }
 
 
@@ -53,51 +69,38 @@ class UsersController {
   static async userSignin(req, res) {
     const { email, password } = req.body;
     const user = await User.getByField('email', email);
-
+    const isCorrectPassword = user && await bcrypt.compareSync(password, user.password);
     if (!user) {
-      ResponseHelper.error(res, 401);
-      // return res.status(401).json({
-      //   status: 401,
-      //   message: 'wrong login data'
-      // });
-    }
+      ResponseHelper.error(res, 404, {
+        message: 'user not found'
+      });
+    } else if (!isCorrectPassword) {
+      ResponseHelper.error(res, 401, {
+        message: 'Invalid username or password'
+      });
+    } else {
+      const expiryTime = 60 * 60; // 1 hour
 
-    const isCorrectPassword = await bcrypt.compareSync(password, user.password);
+      const token = jwt.sign(
+        {
+          id: user.id,
+          email: user.email,
+          isAdmin: user.isAdmin,
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: expiryTime }
+      );
 
-    if (!isCorrectPassword) {
-      ResponseHelper.error(res, 401);
-      // return res.status(401).json({
-      //   status: 401,
-      //   message: 'wrong login data'
-      // });
-    }
-
-    const expiryTime = 60 * 60; // 1 hour
-
-    const token = jwt.sign(
-      {
+      const data = {
         id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
-        isAdmin: user.isAdmin,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: expiryTime }
-    );
+        token
+      };
 
-    const data = {
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      token
-    };
-
-    ResponseHelper.success(res, 200, data);
-    // return res.status(200).json({
-    //   status: 200,
-    //   message: 'login successful', 
-    //   data
-    // });
+      ResponseHelper.success(res, 200, data);
+    }
   }
 
   /**
@@ -106,19 +109,11 @@ class UsersController {
    * @return {JsonResponse} - the json response
    */
   static async userVerify(req, res) {
-    const { userId } = req.params;
-    const user = User.getByField('userId', userId);
-
-    user.status = 'verified';
-
+    const { email } = req.params;
+    const user = await User.verifyUser(email);
+    delete user.password;
     ResponseHelper.success(res, 200, user);
-    // return res.status(200).json({
-    //   status: 200,
-    //   data: user
-    // });
   }
-
-
-  }
+}
 
 export default UsersController;

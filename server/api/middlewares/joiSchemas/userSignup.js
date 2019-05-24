@@ -6,7 +6,7 @@ const email = joi.string().trim().strict().email()
   .required();
 
 // password can be alphanumeric with [@] [.] [+] [-] eg "alph23@.+-"
-const password = joi.string().trim().regex(/^[a-zA-Z 0-9@.+-]*$/)
+const password = joi.string().trim().regex(/^[a-zA-Z 0-9@.+-@#$&]+$/)
   .min(6)
   .max(40)
   .required();

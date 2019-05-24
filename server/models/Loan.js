@@ -1,5 +1,4 @@
 import db from '../db';
-import logger from '../services/logger';
 
 /**
  * export
@@ -35,7 +34,7 @@ class Loan {
     }
   }
 
-   /**
+  /**
    * Get Loan by id
    * @param {String} id - the id primary key
    * @returns {object} record object
@@ -58,7 +57,6 @@ class Loan {
    */
   async getByField(field, value) {
     const text = `SELECT * FROM loans WHERE "${field}" = $1`;
-    
     try {
       const { rows } = await db.query(text, [value]);
       return rows[0];
@@ -67,7 +65,7 @@ class Loan {
     }
   }
 
-/**
+  /**
    * Get Approved Loans
    * @returns {object} records
    */
@@ -100,7 +98,7 @@ class Loan {
    * @returns {Array} records
    */
   async getAllLoans() {
-    const text = "SELECT * FROM loans WHERE status = 'approved' AND repaid = false";
+    const text = 'SELECT * FROM loans';
     try {
       const { rows } = await db.query(text);
       return rows;
@@ -124,20 +122,21 @@ class Loan {
     }
   }
 
-  async changeLoanStatus (status, id) {
-  const text = `UPDATE loans SET status = '${status}' WHERE id = '${loanld}' returning *`;
-  try {
-      const response = await db.query(text, [status, id]);
+  /**
+   * Change Loan Status
+   * @param {String} status - the new status
+   * @param {String} loanId - the loan id
+   * @returns {Array} records
+   */
+  async changeLoanStatus(status, loanId) {
+    const text = `UPDATE loans SET status = '${status}' WHERE id = '${loanId}' returning *`;
+    try {
+      const response = await db.query(text);
       return response.rows[0];
-    } catch(err) {
-      console.log(err);
+    } catch (err) {
       return err;
     }
   }
-
-
-
-
 }
 
 

@@ -1,7 +1,5 @@
-import loans from '../../dummyModels/loans';
 import LoanModel from '../../models/Loan';
 import RepaymentModel from '../../models/Repayment';
-import repayments from '../../dummyModels/repayments';
 import ResponseHelper from '../utils/ResponseHelper';
 
 
@@ -22,14 +20,9 @@ class RepaymentsController {
   static async getRepaymentsForALoan(req, res) {
     const { loanId } = req.params;
 
-    const loan = Loan.getById(loanId);
     const loanRepayments = await Repayment.getByField('loanId', loanId);
 
     ResponseHelper.success(res, 200, loanRepayments);
-    // return res.status(200).json({
-    //   status: 200,
-    //   data: loanRepayments,
-    // });
   }
 
   /**
@@ -39,23 +32,17 @@ class RepaymentsController {
    * @return {JSON} res.json
    */
   static async postRepaymentsForALoan(req, res) {
-    const {
-      loanId,
-      amount,
-      monthlyInstallment
-    } = req.body;
+    const { amount } = req.body;
+    const { loanId } = req.params;
+    const loan = await Loan.getById(loanId);
 
     const newRepayment = await Repayment.create({
       loanId,
       amount,
-      monthlyInstallment
+      monthlyInstallment: loan.paymentInstallment
     });
 
     ResponseHelper.success(res, 201, newRepayment);
-    // return res.status(201).json({
-    //   status: 201,
-    //   data: newRepayment
-    // });
   }
 }
 export default RepaymentsController;

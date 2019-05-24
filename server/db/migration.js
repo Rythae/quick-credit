@@ -1,5 +1,7 @@
+
+import { Pool } from 'pg';
 import logger from '../services/logger';
-import db from '../db';
+import { connectionString } from '../db';
 import seedDatabase from './seed';
 
 const queryText = `
@@ -42,14 +44,15 @@ CREATE TABLE IF NOT EXISTS repayments (
 );
 `;
 
+const db = new Pool({ connectionString });
 
-+
-
-db.query(queryText)
-  .then(result => { logger.info(result);
-  db.on('connect', () => {
+db.on('connect', () => {
   logger.info('CONNECTED TO DATABASE');
   seedDatabase();
-});})
-  .catch(error => logger.error(error));
+});
 
+db.query(queryText)
+  .then(result => {
+    logger.info(result);
+  })
+  .catch(error => logger.error(error));
