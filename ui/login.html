@@ -21,15 +21,19 @@
     </div>
     <div class="container">
       <h1>Sign in</h1>
-      <form  class="regular"id="regular-form" action="login.html">
+      <form  class="regular"id="regular-form" action="index.html">
         <input id="input-email" type="text" placeholder="email" /><br>
         <input id="input-password" type="text" placeholder="password" /><br>
-        <button class="btn-1">Submit</button>
+        <button onclick="login()" class="btn-1">Submit</button>
       </form>
     </div>
 
   </div>
 
-
 </body>
+<script type="text/javascript">
+  const login = () => {
+    window.location.href = "ui/user"
+  }
+</script>
 </html>
