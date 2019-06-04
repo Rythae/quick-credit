@@ -8,13 +8,17 @@
   outline: none;
 }
 
-body {
+
+html,body {
+  font-family: Helvetica, sans-serif;
   background-image: url('../img/newbg.jpg');
   background-size:  cover;
   background-position: center;
   background-repeat: no-repeat;
   /*background-position: -400px -180px;*/
-
+  max-width: 100%;
+ /* height: 95vh;*/
+ /* overflow-x: hidden;*/
 }
 
 input {
@@ -60,19 +64,20 @@ label {
   margin-bottom: 5px;
 }
 
-.wrapper {
+/*.wrapper {
   padding: 15px;
   position: relative;
   z-index: 1;
-  padding-bottom: 100px;
-  /* height: 100%; */
-}
+  padding-bottom: 150px;
+}*/
 
 
 .blur {
   background-color: #000000a1;
-  height: 100%;
-  width: 100%;
+  height: 95vh;
+  width: 570px;
+  margin: 0;
+  padding: 0;
 }
 /*How it works on Landing */
 
@@ -82,19 +87,20 @@ label {
     grid-template-columns: auto auto auto;
     /*padding-left: 5%;*/
     height: 500px;
-    margin-top: 50px;
-    padding-top: 180px;
+    margin-top: 30px;
+    padding-top: 80px;
 }
 
 .heading-div {
   margin: 0 auto;
    text-align: center;
+   padding-top: 150px;
   }
 
   .heading-1 {
     font-size: 2em;
-    bottom: 400px;
-    right: 200px;
+   /* bottom: 400px;
+    right: 200px;*/
     font-weight: bold;
 }
 
@@ -121,7 +127,7 @@ label {
   text-align: center;
 }
 
-.how-box {
+/*.how-box {
   width: 150px;
   height: 150px;
   background: #f1f2f3;
@@ -139,11 +145,16 @@ label {
   width: 100%;
   text-align: center;
   padding-bottom: 20px;
-}
+}*/
 
 /*ends */
 
 /* footer  starts*/
+
+/*.ul-container ul{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}*/
 
 footer {
   background: #0b728a;
@@ -222,6 +233,29 @@ li {
   text-align: center;
   background-color: #07b8dc;
 }
+
+.grid{
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header header"
+        "heading heading"
+        "footer footer";
+  }
+
+  .wrapper {
+  grid-area: header;
+}
+
+.heading-div {
+  grid-area: heading;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+
 
 
 /*.landing-link:hover {
@@ -713,6 +747,8 @@ input#toggle:checked ~ .menu {
     font-size: 140%;
   }
 
+}
+
   /* Tablet Landscape | desktop and above - large */
 @media (min-width: 60em) {
   .navigation_nav .navigation_checkbox .navigation_button .navigation_icon {
@@ -765,7 +801,14 @@ input#toggle:checked ~ .menu {
   body {
     background: #07b8dc;
   }*/
-}
+
+/*.wrapper {
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 100px;*/
+  /* height: 100%; */
+/*}*/
 
   .middle-wrapper {
     background: #f1f2f3;
@@ -776,27 +819,32 @@ input#toggle:checked ~ .menu {
     margin-top: 50px;
     padding-top: 180px;
     text-align: center;
-    /*letter-spacing: 1.9;
-    line-height: 1.7;*/
+    color: #333;
 }
 
-.heading-1 {
+.heading-div {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+ .heading-1 {
     position: absolute;
-    top: 42rem;
-    left: 12rem;
-    /* right: 35rem; */
+    left: 300px;
+    right: 300px;
+    font-size: 2em;
+    font-weight: bold;
+    padding-top: 100px;
+  }
+
+.center-div {
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .para {
   letter-spacing: 0.1rem;
   padding: 15px;
-  margin-right: 40px;
-}
-
-.center-div {
-  margin: 0 auto;
-  justify-content: center;
-  text-align: left;
+  margin-right: 30px;
 }
 
 .center {
@@ -811,14 +859,46 @@ input#toggle:checked ~ .menu {
   text-align: center;
 }
 
+.blur {
+  background-color: #000000a1;
+  height: 100vh;
+  width: 100%;
+}
+
   body {
   background-image: url('../img/newbg.jpg');
   background-size:  cover;
-  background-position: -400px -180px;
+  background-repeat: no-repeat;
+ /* background-position: -400px -180px;*/
+ max-width: 100%;
 
 }
+
+.grid{
+  width: 100%;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header header"
+        "heading heading"
+        "footer footer";
+  }
+
+  .wrapper {
+  grid-area: header;
+}
+
+.heading-div {
+  grid-area: heading;
+}
+
+.footer {
+  grid-area: footer;
+}
+
 }
 
 
 /*ends */
-}
+
+

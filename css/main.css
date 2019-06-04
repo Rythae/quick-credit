@@ -7,12 +7,45 @@
   outline: none;
 }
 
+body {
+  max-width: 100%;
+}
+
+
+.left {
+  background-image: url(../img/newbg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 95vh;
+  width: 400px;
+  /*position: absolute;
+  display: block;*/
+
+ } 
+
+
+  .right {
+  /*  height: 100vh;*/
+   /* width: 50%;*/
+  /*  position: absolute; 
+    bottom: 50px;
+    left: 50%;*/
+  }
+
+  .heading-1 {
+    text-align: center;
+    margin-left: 2rem;
+  }
+
 .centered-content {
   text-align: center;
   font-size: 50px;
-  color: #333;
+  color: whitesmoke;
   margin-right: 10%;
+  /*display: inline-block;*/
 }
+
 
 .side-link.back-btn {
   height: 50px;
@@ -22,42 +55,47 @@
   display: flex;
   align-items: center;
 }
+
+
 .side-link.back-btn.no-bg {
-  background-color: transparent;
-  color: #333;
+  background-color: #07b8dc;
+  padding: 10px;
+  color:  whitesmoke;
   transition: all 300ms ease-in-out;
   position: absolute;
   max-width: 250px;
-  right: 20px;
+  right: 0px;
   top: 20px;
 }
 
 .container {
-  margin: 0 auto;
   text-align: center;
-  margin-left: 8rem;
-  padding-top: 520px;
+  margin-left: 2rem;
   font-size: 20px;
 }
 
 
   input {
-  padding: 15px 15px;
+  padding: 12px 12px;
   display: block;
-  width: 500px;
+  width: 300px;
   margin-bottom: 20px;
+  margin-left: 1rem;
+  margin-right: 1rem;
   border: 1px solid #b1c7cc;
-  font-size: 25px;
+  font-size: 15px;
   border-radius: 4px;
 }
 
 .btn-1 {
-  padding: 15px 15px;
+  padding: 12px 12px;
   display: block;
-  width: 500px;
+  width: 300px;
   margin-bottom: 20px;
+  margin-left: 1rem;
+  margin-right: 1rem;
   border: 1px solid #b1c7cc;
-  font-size: 25px;
+  font-size: 15px;
   border-radius: 4px;
   color: white;
   background-color:  #07b8dc;
@@ -68,16 +106,28 @@
   background: #0b728a;
 }
 
-h2, p {
-  color: white;
-  padding: 10px;
-  letter-spacing: 0.2rem;
-  line-height: 1.5;
-  text-align: center;
-}
 
 h1 {
   padding-bottom: 10px;
+}
+
+
+h2{
+  color: white;
+  padding-top: 120px;
+  letter-spacing: 0.2rem;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 36px;
+}
+
+p {
+  color: white;
+  letter-spacing: 0.2rem;
+  line-height: 1.5;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
 }
 
 
@@ -273,5 +323,3 @@ h1 {
 }
 
 }
-
-
