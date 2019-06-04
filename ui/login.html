@@ -5,33 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Quick Credit</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/grid.css">
+  <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-  <div class="wrapper">
+    
+  <div class="left">
+  <h2>Quick Credit</h2>
+    <p>Get emergency loan easy and fast and pay back over time</p>
+  </div>
+    <div class="right">
     <div class="centered-content">
       <a class="side-link back-btn no-bg" onclick="history.back(-1)">&#8592; &nbsp;&nbsp;Go Back</a>
-      <div class="logo">Login</div>
       <br>
     </div>
-      
-    <form class="regular" action="user/index.html">
-      <label for="email">Email</label>
-      <input type="text" placeholder="email" />
-  
-      <label for="password">Password</label>
-      <input type="text" placeholder="password" />
-      <button class="btn">Submit</button>
-      <a href="signup.html" class="btn">Sign up</a>
-      <a href="admin/index.html" class="btn">Admin Dashboard</a>
-    </form>
+    <div class="container">
+      <h1 class="heading-1">Sign in</h1>
+      <form  class="regular"id="regular-form" action="user/loan-history.html">
+        <input id="input-email" type="text" placeholder="email" /><br>
+        <input id="input-password" type="text" placeholder="password" /><br>
+        <button onclick="login()" class="btn-1">Submit</button>
+      </form>
+    </div>
 
-  </div>
-
-  <div class="page-background">
-    <div class='overlay'></div>
   </div>
 
 </body>
+<script type="text/javascript">
+  const login = () => {
+    window.location.href = "rythae.github.io/quick-credit/ui/user/loan-history.html"
+  }
+</script>
 </html>
