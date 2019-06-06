@@ -1,8 +1,13 @@
 import winston from 'winston';
 import express from 'express';
+import cors from 'cors';
 import morganLogger from 'morgan';
 import bodyParser from 'body-parser';
 import routes from './api/routes';
+import loansRouter from './api/routes/loans';
+import usersRouter from './api/routes/users';
+import authRouter from './api/routes/auth';
+
 
 const logger = winston.createLogger({
   level: 'info',
@@ -18,6 +23,12 @@ app.use(morganLogger('dev'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(cors());
+
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/loans', loansRouter);
+app.use('/api/v1/users', usersRouter);
 
 app.use('/api/v1', routes);
 
